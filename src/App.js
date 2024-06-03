@@ -26,6 +26,7 @@ function App() {
   const [resultsGenetic, setResultsGenetic] = useState(null);
   const [resultGreedy, setResultGreedy] = useState(null);
   const [cuisines, setCuisines] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleMapClick = useCallback((event) => {
     setCurrentLocation({
@@ -42,6 +43,9 @@ function App() {
     }
     event.preventDefault();
     try {
+      setIsLoading(true)
+      setResultsGenetic(null)
+        setResultGreedy(null)
       const response = await fetch('http://localhost:5001/api/find-restaurant', { // Ensure this matches your backend port
         method: 'POST',
         headers: {
@@ -62,8 +66,9 @@ function App() {
 
       const data = await response.json();
       console.log('Data:', data);
-      setResultsGenetic(data.bestRestaurantGenetic.results)
-      setResultGreedy(data.bestRestaurantGreedy.results)
+      setResultsGenetic(data.bestRestaurantGenetic)
+      setResultGreedy(data.bestRestaurantGreedy)
+      setIsLoading(false)
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -147,6 +152,9 @@ function App() {
               Find Restaurant
             </button>
           </form>
+          {
+              isLoading && <div className="loader"></div>
+          }
           {resultsGenetic && (
               <div className="results">
                 <h2>Genetic Algorithm</h2>

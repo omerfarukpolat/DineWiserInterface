@@ -16,6 +16,7 @@ app.post('/api/find-restaurant', (req, res) => {
 
     const { currentLat, currentLon, cuisine, maxBudget, maxTime } = req.body;
 
+
     const pythonProcess = spawn(venvPython, ['/Users/polato/PycharmProjects/pythonProject/project.py', currentLat, currentLon, cuisine, maxBudget, maxTime]);
 
     let dataString = '';
