@@ -16,7 +16,7 @@ const center = {
 
 function App() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyAJ_S6KsYvGHwh-RbmALeJsoA6Pf1eTCvo',
+    googleMapsApiKey: '<API_KEY>',
   });
 
   const [currentLocation, setCurrentLocation] = useState(center);
