@@ -10,6 +10,8 @@ const port = 5001;
 app.use(bodyParser.json());
 app.use(cors());
 
+const pathToPythonScript = '/Users/polato/PycharmProjects/pythonProject/'
+
 const venvPython = path.join(__dirname, 'myenv', 'bin', 'python3'); // Path to the virtual environment's Python executable
 
 app.post('/api/find-restaurant', (req, res) => {
@@ -17,7 +19,7 @@ app.post('/api/find-restaurant', (req, res) => {
     const { currentLat, currentLon, cuisine, maxBudget, maxTime } = req.body;
 
 
-    const pythonProcess = spawn(venvPython, ['/Users/polato/PycharmProjects/pythonProject/project.py', currentLat, currentLon, cuisine, maxBudget, maxTime]);
+    const pythonProcess = spawn(venvPython, [pathToPythonScript + 'project.py', currentLat, currentLon, cuisine, maxBudget, maxTime]);
 
     let dataString = '';
 
@@ -45,7 +47,7 @@ app.post('/api/find-restaurant', (req, res) => {
 });
 
 app.get('/api/cuisines', (req, res) => {
-    const pythonProcess = spawn(venvPython, ['/Users/polato/PycharmProjects/pythonProject/get_cuisines.py']);
+    const pythonProcess = spawn(venvPython, [pathToPythonScript + 'get_cuisines.py']);
 
     let dataString = '';
 

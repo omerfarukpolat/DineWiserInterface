@@ -101,7 +101,7 @@ function App() {
           <h1>CMP:682 Artificial Intelligence Project</h1>
           <p>Group Members:</p>
           <p>1. Omer Faruk Polat: N23232076</p>
-          <p>2. Fatih Arslan Tugay: N23232076</p>
+          <p>2. Fatih Arslan Tugay: N23138682</p>
         </header>
         <div>
           {isLoaded && (
@@ -131,7 +131,7 @@ function App() {
               </select>
             </div>
             <div className="form-group">
-              <label>Max Budget:</label>
+              <label>Max Budget (₺):</label>
               <input
                   type="number"
                   value={maxBudget}
